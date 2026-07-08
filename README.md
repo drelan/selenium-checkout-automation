@@ -1,4 +1,4 @@
-# Apple iPad Smart Folio — Selenium POM Framework
+# eCommerce — Checkout Flow - Selenium POM Framework
 
 End-to-end Selenium test (Page Object Model, Pytest, Allure) covering:
 
