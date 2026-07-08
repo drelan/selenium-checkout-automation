@@ -1,4 +1,3 @@
-import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -18,14 +17,12 @@ def color_swatch_locator(color: str):
 
 
 class ProductPage(BasePage):
-    @allure.step("Assert on the Smart Folio product page")
     def assert_on_page(self):
         assert PRODUCT_URL_FRAGMENT in self.current_url(), (
             f"Expected to be on the Smart Folio product page, got {self.current_url()}"
         )
         return self
 
-    @allure.step("Select color: {color}")
     def select_color(self, color: str):
         swatch = self.wait_clickable(color_swatch_locator(color))
         swatch.click()
@@ -33,11 +30,9 @@ class ProductPage(BasePage):
         self.wait_visible(PRICE)
         return self
 
-    @allure.step("Read the displayed price")
     def get_price(self) -> str:
         return self.wait_visible(PRICE).text.strip()
 
-    @allure.step("Add the product to the bag")
     def add_to_bag(self):
         for _ in range(3):
             button = self.wait_clickable(ADD_TO_BAG_BUTTON)

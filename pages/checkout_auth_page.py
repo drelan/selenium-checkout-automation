@@ -1,4 +1,3 @@
-import allure
 from selenium.webdriver.common.by import By
 
 from pages.base_page import BasePage
@@ -11,7 +10,6 @@ CONTINUE_AS_GUEST_BUTTON = (
 
 
 class CheckoutAuthPage(BasePage):
-    @allure.step("Assert Sign In and Guest Checkout options are shown")
     def assert_signin_and_guest_options_visible(self):
         assert "signIn" in self.current_url(), (
             f"Expected to be on the sign-in/guest checkout page, got {self.current_url()}"

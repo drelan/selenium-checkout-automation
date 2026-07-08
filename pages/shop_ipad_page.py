@@ -1,4 +1,3 @@
-import allure
 from selenium.webdriver.common.by import By
 
 from pages.base_page import BasePage
@@ -8,14 +7,12 @@ SMART_FOLIO_TILE = (By.CSS_SELECTOR, f"a[href*='{PRODUCT_URL_FRAGMENT}-a16-sky']
 
 
 class ShopIpadPage(BasePage):
-    @allure.step("Assert on the iPad store listing page")
     def assert_on_page(self):
         assert "buy-ipad" in self.current_url(), (
             f"Expected to be on the iPad store page, got {self.current_url()}"
         )
         return self
 
-    @allure.step("Scroll to the iPad Accessories section and open the Smart Folio tile")
     def open_smart_folio_tile(self):
         self.scroll_to_bottom()
         tile = self.wait_visible(SMART_FOLIO_TILE)

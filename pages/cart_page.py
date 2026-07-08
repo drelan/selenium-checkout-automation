@@ -1,4 +1,3 @@
-import allure
 from selenium.webdriver.common.by import By
 
 from pages.base_page import BasePage
@@ -12,14 +11,12 @@ CHECKOUT_BUTTON = (
 
 
 class CartPage(BasePage):
-    @allure.step("Assert on the bag/cart page")
     def assert_on_page(self):
         assert "/shop/bag" in self.current_url(), (
             f"Expected to be on the bag page, got {self.current_url()}"
         )
         return self
 
-    @allure.step("Assert bag contains item: {expected_name}")
     def assert_item_present(self, expected_name: str):
         item_text = self.wait_visible(ITEM_NAME).text.replace("\xa0", " ")
         assert expected_name in item_text, (
@@ -27,7 +24,6 @@ class CartPage(BasePage):
         )
         return self
 
-    @allure.step("Assert bag subtotal matches price captured on the product page: {expected_price}")
     def assert_price_matches(self, expected_price: str):
         subtotal = self.wait_visible(SUBTOTAL).text.strip()
         assert subtotal == expected_price, (
@@ -35,7 +31,6 @@ class CartPage(BasePage):
         )
         return self
 
-    @allure.step("Click Checkout")
     def click_checkout(self):
         button = self.wait_clickable(CHECKOUT_BUTTON)
         self.scroll_into_view(button)

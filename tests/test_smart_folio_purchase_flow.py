@@ -1,5 +1,3 @@
-import allure
-
 from pages.home_page import HomePage
 from pages.shop_ipad_page import ShopIpadPage
 from pages.product_page import ProductPage
@@ -8,10 +6,6 @@ from pages.checkout_auth_page import CheckoutAuthPage
 from utils.config import PRODUCT_NAME, TARGET_COLOR
 
 
-@allure.epic("Apple Store")
-@allure.feature("iPad Accessories")
-@allure.title("Add Smart Folio for iPad to bag and reach checkout sign-in options")
-@allure.severity(allure.severity_level.CRITICAL)
 def test_smart_folio_purchase_flow(driver):
     home_page = HomePage(driver)
     shop_ipad_page = ShopIpadPage(driver)
